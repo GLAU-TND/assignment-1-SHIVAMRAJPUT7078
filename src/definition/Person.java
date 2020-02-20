@@ -46,4 +46,12 @@ public class Person {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
+
+    @Override
+    public String toString() {
+        return "First Name:  " + firstName +
+                "Last Name : " + lastName +
+                "Contact Number(s): " + listOfNumbers.toString() +
+                "Email address: " + emailId;
+    }
 }
