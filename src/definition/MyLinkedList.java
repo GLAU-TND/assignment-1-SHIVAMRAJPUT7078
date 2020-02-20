@@ -15,6 +15,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
         return size;
     }
 
+    // This method is for for getting data at a particular index
     public E get(int index) {
         Node<E> node = getNode(index);
         return node.getData();

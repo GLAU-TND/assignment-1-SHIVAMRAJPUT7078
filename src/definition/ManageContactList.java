@@ -8,8 +8,7 @@ public class ManageContactList {
 
     boolean viewAllContact() {
         for (int i = 0; i < list.getSize(); i++) {
-
-            //System.out.println(list(i));
+            System.out.println(list.get(i));
         }
         return true;
     }
