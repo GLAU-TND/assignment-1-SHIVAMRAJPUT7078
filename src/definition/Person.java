@@ -1,16 +1,17 @@
 package definition;
 
+import java.util.List;
+
 public class Person {
     private String firstName;
     private String lastName;
-    //private List<Integer> listOfNumbers;
+    private List<Long> listOfNumbers;
     private String emailId;
 
-    //List<Integer> listOfNumbers,
-    public Person(String firstName, String lastName, String emailId) {
+    public Person(String firstName, String lastName, List<Long> listOfNumbers, String emailId) {
         this.firstName = firstName;
         this.lastName = lastName;
-        //this.listOfNumbers = listOfNumbers;
+        this.listOfNumbers = listOfNumbers;
         this.emailId = emailId;
     }
 
@@ -30,14 +31,14 @@ public class Person {
         this.lastName = lastName;
     }
 
-    /*public List<Integer> getListOfNumbers() {
+    public List<Long> getListOfNumbers() {
         return listOfNumbers;
-    }*/
+    }
 
-    /*public void setListOfNumbers(List<Integer> listOfNumbers) {
+    public void setListOfNumbers(List<Long> listOfNumbers) {
         this.listOfNumbers = listOfNumbers;
     }
-*/
+
     public String getEmailId() {
         return emailId;
     }
@@ -50,7 +51,7 @@ public class Person {
     public String toString() {
         return "First Name:  " + firstName + "\n" +
                 "Last Name : " + lastName + "\n" +
-                //"Contact Number(s): " + listOfNumbers.toString() +
+                "Contact Number(s): " + listOfNumbers.toString() +
                 "Email address: " + emailId;
     }
 }
