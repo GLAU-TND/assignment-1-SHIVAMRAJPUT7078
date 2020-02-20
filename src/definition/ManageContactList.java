@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class ManageContactList {
     MyLinkedList<Person> list = new MyLinkedList<>();
 
+
     boolean addNewContact() {
         ArrayList<Long> contactList = new ArrayList<Long>();
         Scanner sc = new Scanner(System.in);
@@ -41,7 +42,7 @@ public class ManageContactList {
                 break;
         }
         Person person = new Person(firstName, lastName, contactList, emaiID);
-        list.addContact(person);
+        list.add(person);
         return true;
     }
 }
