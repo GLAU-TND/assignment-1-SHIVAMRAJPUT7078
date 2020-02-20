@@ -1,11 +1,13 @@
 package adt;
 
+import java.util.ArrayList;
+
 public interface ContactADT<E> {
     boolean addContact(E item);
 
     boolean viewContact();
 
-    boolean searchContact(E item);
+    ArrayList<E> searchContact(E item);
 
     E deleteContact(E item);
 }

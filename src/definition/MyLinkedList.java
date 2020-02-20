@@ -2,14 +2,19 @@ package definition;
 
 import adt.ContactADT;
 
+import java.util.ArrayList;
+
 public class MyLinkedList<E> implements ContactADT<E> {
     private Node<E> head = null;
 
     private int size = 0;
 
-    private void addFirstE(E item) {
-
-
+    private Node<E> getNode(int index) {
+        Node<E> response = head;
+        for (int i = 0; i < index; i++) {
+            response = response.getNext();
+        }
+        return response;
     }
 
     private void addLastContact(E item) {
@@ -30,9 +35,16 @@ public class MyLinkedList<E> implements ContactADT<E> {
     }
 
     @Override
-    public boolean searchContact(E item) {
-
-        return false;
+    public ArrayList<E> searchContact(E item) {
+        ArrayList<E> list = new ArrayList<>();
+        E data = null;
+        for (int i = 0; i < size; i++) {
+            data = getNode(i).getData();
+            if (item.equals(data)) {
+                list.add(data);
+            }
+        }
+        return list;
     }
 
     @Override
