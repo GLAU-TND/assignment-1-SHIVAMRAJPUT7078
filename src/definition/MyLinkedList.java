@@ -61,6 +61,24 @@ public class MyLinkedList<E> implements ContactADT<E> {
         return response;
     }
 
+    private E removeFirst() {
+        E data = null;
+        Node<E> response = head;
+        if (size == 1) {
+            data = head.getData();
+            head = tail = null;
+            size--;
+            return data;
+        } else {
+            head = response.getNext();
+            response.getNext().previous = head;
+            data = response.getNext().getData();
+            size--;
+            return data;
+        }
+
+    }
+
     @Override
     public E deleteContact(E item) {
         if (getIndex(item) < 0) {
