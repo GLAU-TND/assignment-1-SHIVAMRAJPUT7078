@@ -1,11 +1,11 @@
 package adt;
 
 public interface ContactADT<E> {
-    boolean addContact();
+    boolean addContact(E item);
 
     boolean viewContact();
 
-    long searchContact();
+    boolean searchContact(E item);
 
-    long deleteContact();
+    E deleteContact(E item);
 }
