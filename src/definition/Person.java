@@ -1,17 +1,18 @@
 package definition;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Person {
     private String firstName;
     private String lastName;
-    private List<Long> listOfNumbers;
-    private String emailId;
+    private ArrayList<Long> listOfNumbers;
+    private String emailId = "----------";
 
     public Person(String firstName, String lastName, List<Long> listOfNumbers, String emailId) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.listOfNumbers = listOfNumbers;
+        this.listOfNumbers = (ArrayList<Long>) listOfNumbers;
         this.emailId = emailId;
     }
 
@@ -36,7 +37,7 @@ public class Person {
     }
 
     public void setListOfNumbers(List<Long> listOfNumbers) {
-        this.listOfNumbers = listOfNumbers;
+        this.listOfNumbers = (ArrayList<Long>) listOfNumbers;
     }
 
     public String getEmailId() {

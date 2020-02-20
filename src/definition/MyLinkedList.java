@@ -93,6 +93,21 @@ public class MyLinkedList<E> implements ContactADT<E> {
         }
     }
 
+    private E removeAfter(Node<E> node) {
+        E response = null;
+        Node<E> temp = node.getNext();
+        if (temp != null) {
+            temp.getNext().previous = node;
+            node.next = temp.getNext();
+            response = temp.getData();
+            return response;
+        } else return removeLast();
+    }
+
+    private E remove() {
+        return null;
+    }
+
     @Override
     public E deleteContact(E item) {
         if (getIndex(item) < 0) {
@@ -102,17 +117,20 @@ public class MyLinkedList<E> implements ContactADT<E> {
             Node<E> nod = null;
             for (int i = 0; i < size; i++) {
                 data = getNode(i).getData();
-
                 if (item.equals(data)) {
-                    nod = getNode(i);
                     if (i == 0) {
-
+                        data = removeFirst();
+                    } else if (i == size - 1) {
+                        data = removeLast();
+                    } else {
+                        nod = getNode(i - 1);
+                        data = removeAfter(nod);
                     }
 
                 }
             }
+            return data;
         }
-        return null;
     }
 
     private static class Node<E> {
