@@ -3,6 +3,7 @@ package definition;
 import adt.ContactADT;
 
 import java.util.ArrayList;
+import java.util.NoSuchElementException;
 
 public class MyLinkedList<E> implements ContactADT<E> {
     private Node<E> head = null;
@@ -47,9 +48,37 @@ public class MyLinkedList<E> implements ContactADT<E> {
         return list;
     }
 
+    private int getIndex(E item) {
+        int response = -1;
+        E data = null;
+        for (int i = 0; i < size; i++) {
+            data = getNode(i).getData();
+            if (item.equals(data)) {
+                response = i;
+            }
+        }
+        return response;
+    }
+
     @Override
     public E deleteContact(E item) {
+        if (getIndex(item) < 0) {
+            throw new NoSuchElementException("No such element in present");
+        } else {
+            E data = null;
+            Node<E> nod = null;
+            for (int i = 0; i < size; i++) {
+                data = getNode(i).getData();
 
+                if (item.equals(data)) {
+                    nod = getNode(i);
+                    if (i == 0) {
+
+                    }
+
+                }
+            }
+        }
         return null;
     }
 
