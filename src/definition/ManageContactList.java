@@ -6,6 +6,13 @@ import java.util.Scanner;
 public class ManageContactList {
     MyLinkedList<Person> list = new MyLinkedList<>();
 
+    boolean viewAllContact() {
+        for (int i = 0; i < list.getSize(); i++) {
+
+            //System.out.println(list(i));
+        }
+        return true;
+    }
 
     boolean addNewContact() {
         ArrayList<Long> contactList = new ArrayList<Long>();

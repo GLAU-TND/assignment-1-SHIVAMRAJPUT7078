@@ -15,6 +15,11 @@ public class MyLinkedList<E> implements ContactADT<E> {
         return size;
     }
 
+    public E get(int index) {
+        Node<E> node = getNode(index);
+        return node.getData();
+    }
+
     private Node<E> getNode(int index) {
         Node<E> response = head;
         for (int i = 0; i < index; i++) {
