@@ -47,7 +47,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
     }
 
     @Override
-    public ArrayList<E> searchContact(E item) {
+    public ArrayList<E> search(E item) {
         ArrayList<E> list = new ArrayList<>();
         E data = null;
         for (int i = 0; i < size; i++) {

@@ -52,7 +52,7 @@ public class Person {
     public String toString() {
         return "First Name:  " + firstName + "\n" +
                 "Last Name : " + lastName + "\n" +
-                "Contact Number(s): " + listOfNumbers.toString() +
+                "Contact Number(s): " + listOfNumbers.toString() + "\n" +
                 "Email address: " + emailId;
     }
 }

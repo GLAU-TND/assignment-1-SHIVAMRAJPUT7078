@@ -6,14 +6,15 @@ import java.util.Scanner;
 public class ManageContactList {
     MyLinkedList<Person> list = new MyLinkedList<>();
 
-    boolean viewAllContact() {
+    public boolean viewAllContact() {
         for (int i = 0; i < list.getSize(); i++) {
             System.out.println(list.get(i));
+            System.out.println(" ******************************************** ");
         }
         return true;
     }
 
-    boolean addNewContact() {
+    public boolean addNewContact() {
         ArrayList<Long> contactList = new ArrayList<Long>();
         Scanner sc = new Scanner(System.in);
         System.out.println("You have chosen to add a new contact: ");
@@ -23,14 +24,14 @@ public class ManageContactList {
         System.out.println("Last Name: ");
         String lastName = sc.nextLine();
         System.out.println("Contact Number: ");
-        long contactNumber = sc.nextLong();
+        long contactNumber = Long.parseLong(sc.nextLine().trim());//  sc.nextLong();
         contactList.add(contactNumber);
         System.out.println("Would you like to add another contact number? (y/n): ");
         char choice = sc.nextLine().charAt(0);
         switch (choice) {
             case 'y':
                 System.out.println("Contact Number: ");
-                contactList.add(sc.nextLong());
+                contactList.add(Long.parseLong(sc.nextLine().trim()));
                 break;
             case 'n':
                 break;
