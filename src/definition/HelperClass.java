@@ -24,5 +24,9 @@ public class HelperClass {
         public Node<E> getNext() {
             return next;
         }
+
+        public Node(E data) {
+            this.data = data;
+        }
     }
 }
