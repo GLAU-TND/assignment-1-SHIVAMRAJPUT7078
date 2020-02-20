@@ -1,6 +1,9 @@
 package definition;
 
-public class HelperClass {
+public class HelperClass<Person> {
+    private Node<Person> head = null;
+    private Person data;
+    private Node<Person> next;
 
     private static class Node<E> {
         private Node<E> head;
