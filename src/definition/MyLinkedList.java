@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 
 public class MyLinkedList<E> implements ContactADT<E> {
     private Node<E> head = null;
+    private Node<E> tail = null;
 
     private int size = 0;
 
@@ -19,12 +20,12 @@ public class MyLinkedList<E> implements ContactADT<E> {
     }
 
     private void addLastContact(E item) {
-        Node<E> node = new Node<E>(item, null);
+        Node<E> node = new Node<E>(null, item, null);
     }
 
     @Override
     public boolean addContact(E item) {
-        Node<E> node = new Node<E>(item, head);
+        Node<E> node = new Node<E>(null, item, head);
         head = node;
         size++;
         return true;
@@ -83,18 +84,22 @@ public class MyLinkedList<E> implements ContactADT<E> {
     }
 
     private static class Node<E> {
+        Node<E> previous;
         private E data;
         private Node<E> next;
 
-        public Node(E data, Node<E> next) {
-
+        public Node(Node<E> previous, E data, Node<E> next) {
+            this.previous = previous;
             this.data = data;
             this.next = next;
         }
 
-
         public Node(E data) {
             this.data = data;
+        }
+
+        public Node<E> getPrevious() {
+            return previous;
         }
 
         public E getData() {
