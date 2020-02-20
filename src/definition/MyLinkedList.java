@@ -24,7 +24,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
     }
 
     @Override
-    public boolean addContact(E item) {
+    public boolean add(E item) {
         Node<E> node = new Node<E>(null, item, head);
         head = node;
         size++;
@@ -32,7 +32,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
     }
 
     @Override
-    public boolean viewContact() {
+    public boolean view() {
         return false;
     }
 
@@ -109,7 +109,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
     }
 
     @Override
-    public E deleteContact(E item) {
+    public E delete(E item) {
         if (getIndex(item) < 0) {
             throw new NoSuchElementException("No such element in present");
         } else {
