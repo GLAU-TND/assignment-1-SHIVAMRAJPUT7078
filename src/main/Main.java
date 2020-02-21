@@ -18,6 +18,8 @@ public class Main {
         list.addNewContact();
         System.out.println(" show");
         list.viewAllContact();
+        System.out.println("search");
+        list.searchContact();
 
     }
 }

@@ -16,6 +16,10 @@ public class Person {
         this.emailId = emailId;
     }
 
+    public Person(String firstName) {
+        this.firstName = firstName;
+    }
+
     public String getFirstName() {
         return firstName;
     }

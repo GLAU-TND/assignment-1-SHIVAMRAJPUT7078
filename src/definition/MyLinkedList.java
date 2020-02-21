@@ -23,14 +23,58 @@ public class MyLinkedList<E> implements ContactADT<E> {
 
     private Node<E> getNode(int index) {
         Node<E> response = head;
-        for (int i = 0; i < index; i++) {
+        for (int i = 0; i < index && response != null; i++) {
             response = response.getNext();
         }
         return response;
     }
 
-    private void addLastContact(E item) {
-        Node<E> node = new Node<E>(null, item, null);
+    private void addLast(E item) {
+        Node<E> node = new Node<E>(tail.getPrevious(), item, tail);
+        tail.getPrevious().next = node;
+        tail = node;
+        size++;
+    }
+
+    private boolean addFirst(E item) {
+        Node<E> node = new Node<>(head, item, tail);
+        head = node;
+        tail = node;
+        size++;
+        return true;
+    }
+
+    private boolean addAfter(Node<E> node, E item) {
+
+        /*
+        * Node<E> nextNode = node.getNext();
+        if (nextNode == null) {
+            Node<E> newNode = new Node<>(node, item, null);
+            node.next = newNode;
+            rear = newNode;
+        } else {
+            Node<E> newNode = new Node<>(node, item, nextNode);
+            node.next = newNode;
+            nextNode.previous = newNode;
+        }
+        size++;*/
+        //Node<E> temp1 = null;
+        if (node.getNext() != null) {
+            Node<E> temp = new Node<>(node, item, node.getNext());
+            node.getNext().previous = temp;
+            node.next = temp;
+            size++;
+        }//(node.getNext() == null)
+        else {
+            Node<E> newNode = new Node<>(node, item, node.getNext());
+            node.next = newNode;
+            node.getNext().previous = newNode;
+            addLast(item);
+        }
+        /*else {
+            addFirst(item);
+        }*/
+        return true;
     }
 
     @Override

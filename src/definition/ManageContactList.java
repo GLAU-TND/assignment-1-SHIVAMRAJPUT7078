@@ -4,7 +4,37 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ManageContactList {
+    Scanner sc = new Scanner(System.in);
     MyLinkedList<Person> list = new MyLinkedList<>();
+
+
+    public void searchContact() {
+        System.out.println("You could search for a contact from their first names:");
+        String firstName = sc.nextLine().trim();
+        Person person1 = new Person(firstName);
+        MyLinkedList<Person> list1 = new MyLinkedList<>();
+        for (int i = 0; i < list.getSize(); i++) {
+            if (list.get(i).getFirstName().equals(person1.getFirstName())) {
+                list1.add(list.get(i)); // person1
+            }
+
+
+        }
+        System.out.println(list1.getSize() + " results found");
+        System.out.println("-------- * -------- * -------- * --------");
+        for (int i = 0; i < list1.getSize(); i++) {
+
+       /* }
+        for (Person value : list1) {*/
+            //if(list1.get(i).getFirstName().equals(person1.getFirstName())){
+
+            System.out.println(list1.get(i));
+            //System.out.println(list1.get(i).getListOfNumbers());
+            System.out.println("-------- * -------- * -------- * --------");
+            //}
+
+        }
+    }
 
     public boolean viewAllContact() {
         for (int i = 0; i < list.getSize(); i++) {
@@ -15,8 +45,8 @@ public class ManageContactList {
     }
 
     public boolean addNewContact() {
+
         ArrayList<Long> contactList = new ArrayList<Long>();
-        Scanner sc = new Scanner(System.in);
         System.out.println("You have chosen to add a new contact: ");
         System.out.println("Please enter the name of the Person:");
         System.out.println("First Name: ");
