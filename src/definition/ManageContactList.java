@@ -7,6 +7,18 @@ public class ManageContactList {
     Scanner sc = new Scanner(System.in);
     MyLinkedList<Person> list = new MyLinkedList<>();
 
+    public boolean deleteContact() {
+        System.out.println("Here are all your contacts: ");
+
+        return true;
+    }
+
+    private boolean viewOnlyName() {
+        for (int i = 0; i < list.getSize(); i++) {
+            System.out.println(i + 1 + " : " + list.get(i).getFirstName());
+        }
+        return true;
+    }
 
     public void searchContact() {
         System.out.println("You could search for a contact from their first names:");
