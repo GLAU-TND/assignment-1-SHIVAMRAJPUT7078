@@ -35,22 +35,24 @@ public class ManageContactList {
             if (list.get(i).getFirstName().equals(person1.getFirstName())) {
                 list1.add(list.get(i)); // person1
             }
-
-
         }
-        System.out.println(list1.getSize() + " results found");
-        System.out.println("-------- * -------- * -------- * --------");
-        for (int i = 0; i < list1.getSize(); i++) {
+        if (list1.getSize() == 0) {
+            System.out.println("No results found");
+        } else {
+            System.out.println(list1.getSize() + " results found");
+            System.out.println("-------- * -------- * -------- * --------");
+            for (int i = 0; i < list1.getSize(); i++) {
 
        /* }
         for (Person value : list1) {*/
-            //if(list1.get(i).getFirstName().equals(person1.getFirstName())){
+                //if(list1.get(i).getFirstName().equals(person1.getFirstName())){
 
-            System.out.println(list1.get(i));
-            //System.out.println(list1.get(i).getListOfNumbers());
-            System.out.println("-------- * -------- * -------- * --------");
-            //}
+                System.out.println(list1.get(i));
+                //System.out.println(list1.get(i).getListOfNumbers());
+                System.out.println("-------- * -------- * -------- * --------");
+                //}
 
+            }
         }
     }
 
