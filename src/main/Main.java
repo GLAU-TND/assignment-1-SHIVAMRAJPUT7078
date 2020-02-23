@@ -33,16 +33,5 @@ public class Main {
         }
 
 
-        /*list.addNewContact();
-        //System.out.println(" show");
-        //list.viewAllContact();
-        System.out.println("add a person");
-
-        list.addNewContact();
-
-        System.out.println("-----------------------------");
-        list.searchContact();
-        list.deleteContact();*/
-
     }
 }
