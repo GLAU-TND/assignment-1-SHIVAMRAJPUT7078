@@ -5,7 +5,5 @@ public interface ContactADT<E> {
 
     boolean view();
 
-    //ArrayList<E> search(E item);
-
     E delete(E item);
 }

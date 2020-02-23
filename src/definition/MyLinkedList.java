@@ -50,13 +50,6 @@ public class MyLinkedList<E> implements ContactADT<E> {
         return true;
     }
 
-    /*private boolean addFirst(E item) {
-        Node<E> node = new Node<>(head, item, tail);
-        head = node;
-        tail = node;
-        size++;
-        return true;
-    }*/
     private boolean addAfter(Node<E> node, E item) {
         Node<E> nextNode = node.getNext();
         if (nextNode == null) {
@@ -72,38 +65,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
         return true;
     }
 
-    /*public boolean addAfter(Node<E> node, E item) {
 
-     *//*
-        * Node<E> nextNode = node.getNext();
-        if (nextNode == null) {
-            Node<E> newNode = new Node<>(node, item, null);
-            node.next = newNode;
-            rear = newNode;
-        } else {
-            Node<E> newNode = new Node<>(node, item, nextNode);
-            node.next = newNode;
-            nextNode.previous = newNode;
-        }
-        size++;*//*
-        //Node<E> temp1 = null;
-        if (node.getNext() != null) {
-            Node<E> temp = new Node<>(node, item, node.getNext());
-            node.getNext().previous = temp;
-            node.next = temp;
-            size++;
-        }//(node.getNext() == null)
-        else {
-            Node<E> newNode = new Node<>(node, item, node.getNext());
-            node.next = newNode;
-            node.getNext().previous = newNode;
-            addLast(item);
-        }
-        *//*else {
-            addFirst(item);
-        }*//*
-        return true;
-    }*/
 
     @Override
     public boolean add(E item) {
@@ -119,30 +81,12 @@ public class MyLinkedList<E> implements ContactADT<E> {
             return addAfter(getNode(index - 1), item);
         }
     }
-    /*public boolean add(E item) {
-        Node<E> node = new Node<E>(null, item, head);
-        head = node;
-        size++;
-        return true;
-    }*/
 
     @Override
     public boolean view() {
         return false;
     }
 
-    //@Override
-    /*public ArrayList<E> search(E item) {
-        ArrayList<E> list = new ArrayList<>();
-        E data = null;
-        for (int i = 0; i < size; i++) {
-            data = getNode(i).getData();
-            if (item.equals(data)) {
-                list.add(data);
-            }
-        }
-        return list;
-    }*/
 
     private int getIndex(E item) {
         int response = -1;
@@ -225,15 +169,6 @@ public class MyLinkedList<E> implements ContactADT<E> {
                 data = getNode(i).getData();
                 if (item.equals(data)) {
                     remove(getNode(i));
-                    /*if (i == 0) {
-                        data = removeFirst();
-                    } else if (i == size - 1) {
-                        data = removeLast();
-                    } else {
-                        nod = getNode(i - 1);
-                        data = removeAfter(nod);
-                    }*/
-
                 }
             }
             return data;
