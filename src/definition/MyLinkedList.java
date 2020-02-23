@@ -2,7 +2,6 @@ package definition;
 
 import adt.ContactADT;
 
-import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class MyLinkedList<E> implements ContactADT<E> {
@@ -29,7 +28,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
         return response;
     }
 
-    private void addLast(E item) {
+    public void addLast(E item) {
         Node<E> node = new Node<E>(tail.getPrevious(), item, tail);
         tail.getPrevious().next = node;
         tail = node;
@@ -37,16 +36,45 @@ public class MyLinkedList<E> implements ContactADT<E> {
     }
 
     private boolean addFirst(E item) {
+        Node<E> node;
+        if (head == null) {
+            node = new Node<>(null, item, null);
+            head = node;
+            tail = node;
+        } else {
+            node = new Node<>(null, item, head);
+            head.previous = node;
+            head = node;
+        }
+        size++;
+        return true;
+    }
+
+    /*private boolean addFirst(E item) {
         Node<E> node = new Node<>(head, item, tail);
         head = node;
         tail = node;
         size++;
         return true;
+    }*/
+    private boolean addAfter(Node<E> node, E item) {
+        Node<E> nextNode = node.getNext();
+        if (nextNode == null) {
+            Node<E> newNode = new Node<>(node, item, null);
+            node.next = newNode;
+            tail = newNode;
+        } else {
+            Node<E> newNode = new Node<>(node, item, nextNode);
+            node.next = newNode;
+            nextNode.previous = newNode;
+        }
+        size++;
+        return true;
     }
 
-    private boolean addAfter(Node<E> node, E item) {
+    /*public boolean addAfter(Node<E> node, E item) {
 
-        /*
+     *//*
         * Node<E> nextNode = node.getNext();
         if (nextNode == null) {
             Node<E> newNode = new Node<>(node, item, null);
@@ -57,7 +85,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
             node.next = newNode;
             nextNode.previous = newNode;
         }
-        size++;*/
+        size++;*//*
         //Node<E> temp1 = null;
         if (node.getNext() != null) {
             Node<E> temp = new Node<>(node, item, node.getNext());
@@ -71,27 +99,40 @@ public class MyLinkedList<E> implements ContactADT<E> {
             node.getNext().previous = newNode;
             addLast(item);
         }
-        /*else {
+        *//*else {
             addFirst(item);
-        }*/
+        }*//*
         return true;
-    }
+    }*/
 
     @Override
     public boolean add(E item) {
+        return add(size, item);
+    }
+
+    public boolean add(int index, E item) throws IndexOutOfBoundsException {
+        if (index < 0 && index > size) {
+            throw new IndexOutOfBoundsException(Integer.toString(index));
+        } else if (index == 0) {
+            return addFirst(item);
+        } else {
+            return addAfter(getNode(index - 1), item);
+        }
+    }
+    /*public boolean add(E item) {
         Node<E> node = new Node<E>(null, item, head);
         head = node;
         size++;
         return true;
-    }
+    }*/
 
     @Override
     public boolean view() {
         return false;
     }
 
-    @Override
-    public ArrayList<E> search(E item) {
+    //@Override
+    /*public ArrayList<E> search(E item) {
         ArrayList<E> list = new ArrayList<>();
         E data = null;
         for (int i = 0; i < size; i++) {
@@ -101,7 +142,7 @@ public class MyLinkedList<E> implements ContactADT<E> {
             }
         }
         return list;
-    }
+    }*/
 
     private int getIndex(E item) {
         int response = -1;
@@ -118,8 +159,9 @@ public class MyLinkedList<E> implements ContactADT<E> {
     private E removeFirst() {
         E data = null;
         Node<E> response = head;
-        if (size == 1) {
-            data = head.getData();
+        //if (size == 1) {
+        if (head.getNext() == null) {
+            data = response.getData();
             head = tail = null;
             size--;
             return data;
@@ -158,7 +200,17 @@ public class MyLinkedList<E> implements ContactADT<E> {
         } else return removeLast();
     }
 
-    private E remove() {
+    private E remove(Node<E> node) {
+        Node<E> temp = node.getNext();
+        if (temp == null) {
+            return removeLast();
+        } else if (node.getPrevious() == null) {
+            return removeFirst();
+        } else {
+            temp.previous = node.getPrevious();
+            node.getPrevious().next = node.getNext();
+            size--;
+        }
         return null;
     }
 
@@ -172,14 +224,15 @@ public class MyLinkedList<E> implements ContactADT<E> {
             for (int i = 0; i < size; i++) {
                 data = getNode(i).getData();
                 if (item.equals(data)) {
-                    if (i == 0) {
+                    remove(getNode(i));
+                    /*if (i == 0) {
                         data = removeFirst();
                     } else if (i == size - 1) {
                         data = removeLast();
                     } else {
                         nod = getNode(i - 1);
                         data = removeAfter(nod);
-                    }
+                    }*/
 
                 }
             }

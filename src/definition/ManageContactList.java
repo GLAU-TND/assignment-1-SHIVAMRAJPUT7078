@@ -9,6 +9,12 @@ public class ManageContactList {
 
     public boolean deleteContact() {
         System.out.println("Here are all your contacts: ");
+        viewOnlyName();
+        System.out.println("Press the number against the contact to delete it: 1");
+        int number = Integer.parseInt(sc.nextLine().trim());
+        System.out.println(list.get(number - 1).getFirstName() + "'s contact deleted from list!");
+        list.delete(list.get(number - 1));
+        viewAllContact();
 
         return true;
     }
@@ -95,3 +101,9 @@ public class ManageContactList {
         return true;
     }
 }
+
+
+
+
+
+

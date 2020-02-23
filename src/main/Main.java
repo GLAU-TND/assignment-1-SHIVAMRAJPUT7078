@@ -11,15 +11,14 @@ public class Main {
         System.out.println("add a person");
 
         list.addNewContact();
-        System.out.println(" show");
-        list.viewAllContact();
+        //System.out.println(" show");
+        //list.viewAllContact();
         System.out.println("add a person");
 
         list.addNewContact();
-        System.out.println(" show");
-        list.viewAllContact();
-        System.out.println("search");
-        list.searchContact();
+
+        System.out.println("-----------------------------");
+        list.deleteContact();
 
     }
 }
